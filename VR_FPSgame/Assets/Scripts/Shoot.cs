@@ -12,6 +12,10 @@ public class Shoot : MonoBehaviour
     [SerializeField] private AudioSource gunshotSound;
     private bool muzzleFlashEnabled = true;
     private bool soundEffectEnabled = true;
+    private float timer;
+    private float delay = 1f;
+
+    public bool TestShootMode;
 
     private void Start()
     {
@@ -19,6 +23,19 @@ public class Shoot : MonoBehaviour
         else muzzleFlash.Stop();
 
         if (gunshotSound == null) soundEffectEnabled = false;
+    }
+
+    private void Update()
+    {
+        if (TestShootMode)
+        {
+            timer += Time.deltaTime;
+            if (timer > delay)
+            {
+                ShootBullet();
+                timer = 0;
+            }
+        }
     }
 
     public void ShootBullet()

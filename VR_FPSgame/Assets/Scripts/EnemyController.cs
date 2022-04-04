@@ -81,4 +81,28 @@ public class EnemyController : MonoBehaviour
 
         anim.SetFloat("Speed", velocity, 0.05f, Time.deltaTime);
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        switch (other.collider.tag)
+        {
+            case "RifleBullet":
+                takeDamage(PlayerStats.RifleDamage);
+                break;
+            case "PistolBullet":
+                break;
+            case "ShotgunShell":
+                break;
+            case "Grenade":
+                break;
+            default:
+                Debug.Log(other.collider.tag + " (tag) does not have any consequences assigned.");
+                break;
+        }
+    }
+
+    private void takeDamage(int pDamage)
+    {
+        currentHealth -= pDamage;
+    }
 }
