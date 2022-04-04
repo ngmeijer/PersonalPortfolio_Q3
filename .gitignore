@@ -71,3 +71,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 VR_FPSgame/Assets/TextMesh Pro/
+
+VR_FPSgame/Assets/Mixamo/
+
+VR_FPSgame/Assets/Downloaded Assets/
