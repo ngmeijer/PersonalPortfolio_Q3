@@ -11,38 +11,33 @@ public class TwoHandInteractable : XRGrabInteractable
 
     private void Start()
     {
-        foreach (var VARIABLE in secondHandGrabPoints)
+        foreach (var point in secondHandGrabPoints)
         {
-            VARIABLE.selectEntered.AddListener(OnSecondHandGrab);
-            VARIABLE.selectExited.AddListener(OnSecondHandRelease);
+            point.selectEntered.AddListener(OnSecondHandGrab);
+            point.selectExited.AddListener(OnSecondHandRelease);
         }
     }
-
-    public void OnSecondHandGrab(SelectEnterEventArgs args)
-    {
-        Debug.Log("2nd hand grab");
-        GameManager.onDebugMessage.Invoke("2nd hand release");
-    }
-
-    private void OnSecondHandRelease(SelectExitEventArgs args)
-    {
-        Debug.Log("2nd hand release");
-        GameManager.onDebugMessage.Invoke("2nd hand grab");
-    }
-
 
     protected override void OnSelectEntered(SelectEnterEventArgs args)
     {
         Debug.Log("First grab enter");
         base.OnSelectEntered(args);
-        GameManager.onDebugMessage.Invoke("First grab enter");
     }
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
         Debug.Log("First grab exit");
         base.OnSelectExited(args);
-        GameManager.onDebugMessage.Invoke("First grab exit");
+    }
+    
+    private void OnSecondHandGrab(SelectEnterEventArgs args)
+    {
+        Debug.Log("2nd hand grab");
+    }
+
+    private void OnSecondHandRelease(SelectExitEventArgs args)
+    {
+        Debug.Log("2nd hand release");
     }
 
 
