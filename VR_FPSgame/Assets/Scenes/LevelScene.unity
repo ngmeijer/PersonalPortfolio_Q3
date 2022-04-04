@@ -1452,6 +1452,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shotgun
       objectReference: {fileID: 0}
+    - target: {fileID: 40956056521808449, guid: 3eeb6b38946009346a722234725f97af,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 854085229006176507, guid: 3eeb6b38946009346a722234725f97af,
         type: 3}
       propertyPath: m_RootOrder
@@ -2444,6 +2449,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pistol
       objectReference: {fileID: 0}
+    - target: {fileID: 9184630436585483710, guid: 280399d24b7459744ba1fa3e71d96518,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 280399d24b7459744ba1fa3e71d96518, type: 3}
 --- !u!1 &836196180
@@ -2602,7 +2612,8 @@ MonoBehaviour:
     type: 3}
   bulletSpawnpoint: {fileID: 377037125}
   bulletForce: 40
-  muzzleFlashEnabled: {fileID: 0}
+  muzzleFlash: {fileID: 0}
+  gunshotSound: {fileID: 0}
 --- !u!1 &844109905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5112,70 +5123,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1265648188, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3426746
-      objectReference: {fileID: 0}
-    - target: {fileID: 1265648188, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.4373765
-      objectReference: {fileID: 0}
-    - target: {fileID: 1265648188, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.440533
-      objectReference: {fileID: 0}
-    - target: {fileID: 1265648188, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1265648188, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.525
-      objectReference: {fileID: 0}
-    - target: {fileID: 1265648188, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 1265648189, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_Size.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1265648189, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_Size.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1265648189, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_Size.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1265648189, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_Center.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1265648189, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1265648189, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_Center.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1265648190, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 2044789740}
-    - target: {fileID: 2079468538, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.003
-      objectReference: {fileID: 0}
-    - target: {fileID: 2079468538, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.605
-      objectReference: {fileID: 0}
-    - target: {fileID: 1652842947565529777, guid: 4aeae2ddb3941ab408ac06ac5b2f6333,
-        type: 3}
-      propertyPath: RotationType
-      value: 2
+    - target: {fileID: 1575308432, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
+      propertyPath: bulletForce
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1652842947565529777, guid: 4aeae2ddb3941ab408ac06ac5b2f6333,
         type: 3}
