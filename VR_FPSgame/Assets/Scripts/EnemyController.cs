@@ -4,25 +4,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-enum CurrentState
+enum E_State
 {
     Idle,
-    Move,
+    Chase,
     Attack,
     Death,
 }
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private float redirectionInterval = 1f;
-    [SerializeField] private Animator anim;
+    public NavMeshAgent agent { get; private set; }
+    public Animator anim { get; private set; }
+    public GameObject player { get; private set; }
+    
     private float timer;
 
-    private GameObject player;
 
     private float speed;
-    private CurrentState state = CurrentState.Idle;
+
+    private EnemyState currentState;
+    private EnemyIdleState idleState;
+    private EnemyChaseState chaseState;
+    private EnemyDeathState deathState;
+    private EnemyAttackState attackState;
 
     [SerializeField] [Range(25, 500)] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
@@ -33,37 +38,54 @@ public class EnemyController : MonoBehaviour
 
         currentHealth = maxHealth;
         GameStats.onPlayerDeath.AddListener(listenToPlayerDeathEvent);
-        agent.SetDestination(player.transform.position);
+        changeState(E_State.Chase);
     }
 
     private void listenToPlayerDeathEvent()
     {
-        Debug.Log("Player has died");
-        state = CurrentState.Idle;
+        changeState(E_State.Death);
+    }
+
+    private void changeState(E_State pNewState)
+    {
+        if(currentState != null) currentState.ExitState();
+
+        switch (pNewState)
+        {
+            case E_State.Idle:
+                currentState = idleState;
+                break;
+            case E_State.Chase:
+                currentState = chaseState;
+                break;
+            case E_State.Attack:
+                currentState = attackState;
+                break;
+            case E_State.Death:
+                currentState = deathState;
+                break;
+        }
+        
+        currentState.EnterState();
     }
 
     private void Update()
     {
-        if (state == CurrentState.Death) return;
-
-        timer += Time.deltaTime;
-
-        if (timer > redirectionInterval && agent.remainingDistance > agent.stoppingDistance)
+        if (agent.remainingDistance > agent.stoppingDistance)
         {
-            agent.SetDestination(player.transform.position);
+            changeState(E_State.Chase);
             timer = 0;
-            state = CurrentState.Move;
         }
 
-        if (agent.remainingDistance <= agent.stoppingDistance && state != CurrentState.Attack)
+        if (agent.remainingDistance <= agent.stoppingDistance && currentState != attackState)
         {
-            state = CurrentState.Attack;
+            changeState(E_State.Attack);
             anim.SetBool("IsAttacking", true);
         }
 
-        if (currentHealth <= 0 && state != CurrentState.Death)
+        if (currentHealth <= 0 && currentState != deathState)
         {
-            state = CurrentState.Death;
+            changeState(E_State.Death);
             anim.SetTrigger("HasDied");
             agent.isStopped = true;
             if (agent.velocity.magnitude > 0)

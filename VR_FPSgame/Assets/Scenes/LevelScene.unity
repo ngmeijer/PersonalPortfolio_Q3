@@ -999,8 +999,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 922645116}
-  enemySpawnRange: 50
-  enemySpawnRate: 1.42
+  enemySpawnRange: 100
+  enemySpawnRate: 8
 --- !u!4 &386610603
 Transform:
   m_ObjectHideFlags: 0
