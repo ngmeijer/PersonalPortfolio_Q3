@@ -16,18 +16,26 @@ public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent enemyAgent
     {
-        get { return agent; }
-        private set { agent = value; }
+        get => agent;
+        private set => agent = value;
     }
     [SerializeField] private NavMeshAgent agent;
 
     public Animator enemyAnimator
     {
-        get { return anim; }
-        private set { anim = value; }
+        get => anim;
+        private set => anim = value;
     }
+
     [SerializeField]private Animator anim;
-    
+
+    public AudioSource enemyAudioSource
+    {
+        get => audioSource;
+        private set => audioSource = value;
+    }
+    [SerializeField]private AudioSource audioSource;
+
     public GameObject player { get; private set; }
 
     private float timer;
@@ -43,6 +51,7 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] [Range(25, 500)] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
+
     public bool HasDied;
 
     private void Awake()

@@ -11,12 +11,14 @@ public abstract class EnemyState : MonoBehaviour
     protected GameObject player;
     protected NavMeshAgent agent;
     protected EnemyController master;
+    protected AudioSource audioSource;
 
     private void Awake()
     {
         master = GetComponent<EnemyController>();
         agent = master.enemyAgent;
         anim = master.enemyAnimator;
+        audioSource = master.enemyAudioSource;
         player = master.player;
     }
 
