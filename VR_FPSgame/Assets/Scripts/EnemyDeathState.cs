@@ -2,26 +2,19 @@
 
 public class EnemyDeathState : EnemyState
 {
-    public EnemyController master;
-    
-    private void Start()
-    {
-        anim = master.anim;
-        player = master.player;
-    }
-
     public override void EnterState()
     {
         stateIsActive = true;
+
+        master.HasDied = true;
+        anim.SetTrigger("HasDied");
+        agent.isStopped = true;
+        if (agent.velocity.magnitude > 0)
+            agent.velocity = Vector3.zero;
     }
 
     public override void ExitState()
     {
         stateIsActive = false;
-    }
-
-    private void Update()
-    {
-        if (!stateIsActive) return;
     }
 }

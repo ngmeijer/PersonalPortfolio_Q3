@@ -44,6 +44,6 @@ public class Shoot : MonoBehaviour
         if(soundEffectEnabled) gunshotSound.Play();
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnpoint.position, bulletSpawnpoint.rotation);
         bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * bulletForce, ForceMode.Impulse);
-        if (muzzleFlashEnabled) muzzleFlash.Stop();
+        // if (muzzleFlashEnabled) muzzleFlash.Stop();
     }
 }

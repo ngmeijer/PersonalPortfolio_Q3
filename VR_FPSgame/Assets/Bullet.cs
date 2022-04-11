@@ -8,5 +8,6 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         if (other.collider.CompareTag("Untagged")) Destroy(this);
+        if (other.collider.CompareTag("Enemy")) Destroy(this);
     }
 }

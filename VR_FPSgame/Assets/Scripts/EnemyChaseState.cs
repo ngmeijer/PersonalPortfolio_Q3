@@ -3,17 +3,8 @@ using UnityEngine.AI;
 
 public class EnemyChaseState : EnemyState
 {
-    public EnemyController master;
-    public NavMeshAgent agent;
     [SerializeField] [Range(0.1f, 3f)] private float redirectionInterval = 1f;
     private float timer;
-    
-    private void Start()
-    {
-        anim = master.anim;
-        player = master.player;
-        agent = master.agent;
-    }
 
     public override void EnterState()
     {
@@ -21,12 +12,7 @@ public class EnemyChaseState : EnemyState
         agent.SetDestination(player.transform.position);
     }
 
-    public override void ExitState()
-    {
-        stateIsActive = false;
-    }
-
-    private void Update()
+    protected override void Update()
     {
         if (!stateIsActive) return;
 
@@ -37,5 +23,9 @@ public class EnemyChaseState : EnemyState
             agent.SetDestination(player.transform.position);
             timer = 0;
         }
+        
+        float velocity = agent.velocity.magnitude / agent.speed;
+        
+        anim.SetFloat("Speed", velocity, 0.05f, Time.deltaTime);
     }
 }

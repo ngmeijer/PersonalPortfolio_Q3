@@ -3,25 +3,21 @@ using UnityEngine;
 
 public class EnemyAttackState : EnemyState
 {
-    public EnemyController master;
-    
-    private void Start()
-    {
-        anim = master.anim;
-        player = master.player;
-    }
-
     public override void EnterState()
     {
         stateIsActive = true;
+        
+        anim.SetBool("IsAttacking", true);
     }
 
     public override void ExitState()
     {
         stateIsActive = false;
+        
+        anim.SetBool("IsAttacking", false);
     }
 
-    private void Update()
+    protected override void Update()
     {
         if (!stateIsActive) return;
     }
