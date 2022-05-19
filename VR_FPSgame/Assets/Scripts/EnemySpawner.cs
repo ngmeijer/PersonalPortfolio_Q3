@@ -12,8 +12,9 @@ public class EnemySpawner : MonoBehaviour
     private Dictionary<int, GameObject> enemyPrefabs = new Dictionary<int, GameObject>();
     [SerializeField] [Range(10, 100)] private int enemySpawnRange;
     [SerializeField] [Range(0.1f, 10f)] private float enemySpawnRate;
+    private int enemyCount;
+    [SerializeField] private int maxEnemyCount = 5;
 
-    
     private Vector3 randomSpawnPoint;
 
     private void Start()
@@ -26,6 +27,11 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator spawnEnemy()
     {
+        if (enemyCount >= maxEnemyCount)
+        {
+            StopCoroutine(spawnEnemy());
+            yield break;
+        }
         //Spawn enemy
         Vector3 direction = Random.insideUnitSphere * enemySpawnRange;
         direction += player.transform.position;       
@@ -39,6 +45,8 @@ public class EnemySpawner : MonoBehaviour
         enemyPrefabs.TryGetValue(100, out selectedEnemy);
         
         Instantiate(selectedEnemy, spawnPosition, Quaternion.identity, transform);
+        selectedEnemy.name = $"Enemy {enemyCount}";
+        enemyCount++;
 
         yield return new WaitForSeconds(enemySpawnRate);
 

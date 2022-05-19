@@ -20035,18 +20035,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 940572347}
-        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
       m_Calls:
@@ -20144,9 +20132,10 @@ MonoBehaviour:
   bulletPrefab: {fileID: 41394042439533466, guid: 1335ff4ea0bfdf34095c6fef83f832a9,
     type: 3}
   bulletSpawnpoint: {fileID: 2079468538}
-  bulletForce: 25.7
+  bulletForce: 50
   muzzleFlash: {fileID: 940572347}
   gunshotSound: {fileID: 6860224828171459101}
+  TestShootMode: 0
 --- !u!82 &6860224828171459101
 AudioSource:
   m_ObjectHideFlags: 0

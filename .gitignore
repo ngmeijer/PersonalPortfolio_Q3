@@ -71,3 +71,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 VR_FPSgame/Assets/TextMesh Pro/
+VR_FPSgame/Assets/Scenes/LevelScene/
+
+VR_FPSgame/Assets/Downloaded Assets/Flooded_Grounds/
+
+VR_FPSgame/Assets/Downloaded Assets/Sound Effects/

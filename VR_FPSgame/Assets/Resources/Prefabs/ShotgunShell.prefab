@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23619214475459618}
   - component: {fileID: 8076599994164504170}
   - component: {fileID: 7304800546440461142}
+  - component: {fileID: 6863455235860756267}
   m_Layer: 0
   m_Name: ShotgunShell
   m_TagString: Untagged
@@ -112,3 +113,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.027514998, y: 0.052041993, z: 0.02751599}
   m_Center: {x: 0.000000056810673, y: 2.646978e-22, z: 0.0000000046566124}
+--- !u!114 &6863455235860756267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23619214473192162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1594d68fa8627024588cc15848beebc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

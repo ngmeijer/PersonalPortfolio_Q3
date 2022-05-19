@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyChaseState : EnemyState
@@ -9,6 +10,7 @@ public class EnemyChaseState : EnemyState
     public override void EnterState()
     {
         stateIsActive = true;
+        agent.speed = maxSpeed;
         agent.SetDestination(player.transform.position);
     }
 
@@ -27,5 +29,11 @@ public class EnemyChaseState : EnemyState
         float velocity = agent.velocity.magnitude / agent.speed;
         
         anim.SetFloat("Speed", velocity, 0.05f, Time.deltaTime);
+    }
+
+    public override void ExitState()
+    {
+        anim.SetFloat("Speed", 0, 0, Time.deltaTime);
+        stateIsActive = false;
     }
 }

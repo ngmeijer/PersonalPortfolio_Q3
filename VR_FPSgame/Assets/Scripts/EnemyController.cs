@@ -7,6 +7,7 @@ using UnityEngine.AI;
 enum E_State
 {
     Idle,
+    Patrol,
     Chase,
     Attack,
     Death,
@@ -19,6 +20,7 @@ public class EnemyController : MonoBehaviour
         get => agent;
         private set => agent = value;
     }
+
     [SerializeField] private NavMeshAgent agent;
 
     public Animator enemyAnimator
@@ -27,24 +29,22 @@ public class EnemyController : MonoBehaviour
         private set => anim = value;
     }
 
-    [SerializeField]private Animator anim;
+    [SerializeField] private Animator anim;
 
     public AudioSource enemyAudioSource
     {
         get => audioSource;
         private set => audioSource = value;
     }
-    [SerializeField]private AudioSource audioSource;
+
+    [SerializeField] private AudioSource audioSource;
 
     public GameObject player { get; private set; }
-
-    private float timer;
-
-    private float speed;
 
     private E_State e_currentState;
     private EnemyState currentState;
     private EnemyIdleState idleState;
+    private EnemyPatrolState patrolState;
     private EnemyChaseState chaseState;
     private EnemyDeathState deathState;
     private EnemyAttackState attackState;
@@ -52,6 +52,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] [Range(25, 500)] private float maxHealth = 100f;
     [SerializeField] private float currentHealth;
 
+    private bool agentIsAlert;
     public bool HasDied;
 
     private void Awake()
@@ -62,6 +63,7 @@ public class EnemyController : MonoBehaviour
         GameStats.onPlayerDeath.AddListener(listenToPlayerDeathEvent);
 
         idleState = GetComponent<EnemyIdleState>();
+        patrolState = GetComponent<EnemyPatrolState>();
         chaseState = GetComponent<EnemyChaseState>();
         deathState = GetComponent<EnemyDeathState>();
         attackState = GetComponent<EnemyAttackState>();
@@ -69,7 +71,7 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
-        changeState(E_State.Chase);
+        changeState(E_State.Patrol);
     }
 
     private void listenToPlayerDeathEvent() => changeState(E_State.Idle);
@@ -86,11 +88,17 @@ public class EnemyController : MonoBehaviour
                 e_currentState = E_State.Idle;
                 currentState = idleState;
                 break;
+            case E_State.Patrol:
+                e_currentState = E_State.Patrol;
+                currentState = patrolState;
+                break;
             case E_State.Chase:
+                agentIsAlert = true;
                 e_currentState = E_State.Chase;
                 currentState = chaseState;
                 break;
             case E_State.Attack:
+                agentIsAlert = true;
                 e_currentState = E_State.Attack;
                 currentState = attackState;
                 break;
@@ -108,8 +116,11 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        if (agent.remainingDistance > agent.stoppingDistance) changeState(E_State.Chase);
-        if (agent.remainingDistance <= agent.stoppingDistance) changeState(E_State.Attack);
+        if (!agentIsAlert) changeState(E_State.Patrol);
+        
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+        if (distanceToPlayer > agent.stoppingDistance && agentIsAlert) changeState(E_State.Chase);
+        if (distanceToPlayer <= agent.stoppingDistance && agentIsAlert) changeState(E_State.Attack);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -120,20 +131,14 @@ public class EnemyController : MonoBehaviour
                 takeDamage(PlayerStats.RifleDamage);
                 break;
             case "PistolBullet":
+                takeDamage(PlayerStats.PistolDamage);
                 break;
             case "ShotgunShell":
+                takeDamage(PlayerStats.ShotgunDamage);
                 break;
             case "Grenade":
                 break;
-            default:
-                Debug.Log(other.collider.tag + " (tag) does not have any consequences assigned.");
-                break;
         }
-    }
-
-    private void decreaseSpeed()
-    {
-        
     }
 
     private void takeDamage(int pDamage)

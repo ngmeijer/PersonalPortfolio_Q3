@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -8386884055566896864}
   - component: {fileID: 5112348480354800506}
   - component: {fileID: -5128143729266401972}
+  - component: {fileID: -8474737938814136401}
   - component: {fileID: 2981958616329423520}
   - component: {fileID: -3697551483479831915}
   - component: {fileID: 56808010960293195}
@@ -49,12 +50,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 5112348480354800485}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
-  m_Speed: 3.5
+  m_Radius: 2
+  m_Speed: 4.5
   m_Acceleration: 2
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 2
+  m_AngularSpeed: 360
+  m_StoppingDistance: 3.2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -73,8 +74,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.8499632, y: 3.5897937, z: 0.301171}
-  m_Center: {x: 0.07857847, y: 1.2948973, z: 0.25055826}
+  m_Size: {x: 1.7309195, y: 3.5897937, z: 1.0465491}
+  m_Center: {x: 0.019056618, y: 1.2948973, z: 0.35410407}
 --- !u!54 &-2867141752474015602
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -201,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 5112348480354800507}
   anim: {fileID: 5112348479457928156}
+  audioSource: {fileID: 0}
   maxHealth: 100
   currentHealth: 0
   HasDied: 0
@@ -216,6 +218,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd8f6ba1fa8482aa44d64b54e20ab0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 0
+  stateNoises:
+  - {fileID: 8300000, guid: e4b15ccc6c1d8aa44be86a9f01a22c0f, type: 3}
+  - {fileID: 8300000, guid: efa052ec7030a9e489a69c2e98517db1, type: 3}
+  minAttackSpeed: 1.8
+  maxAttackSpeed: 10
+--- !u!114 &-8474737938814136401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5112348480354800485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae45b061ca3940439037940a974bbc93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxSpeed: 2
+  stateNoises: []
 --- !u!114 &2981958616329423520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,6 +250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24f6fe0532464dfcb34a7b44b0ee544c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 4.5
+  stateNoises:
+  - {fileID: 8300000, guid: f607f649de9166e46b76be5de6cf16b7, type: 3}
   redirectionInterval: 1
 --- !u!114 &-3697551483479831915
 MonoBehaviour:
@@ -241,6 +266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b288e9a6a184297acc0763167dc8f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 0
+  stateNoises:
+  - {fileID: 8300000, guid: b632ae8aac24f7441976016a846e559b, type: 3}
 --- !u!114 &56808010960293195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +281,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24fc53c2e52849a68646c2a090d5637f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 0
+  stateNoises:
+  - {fileID: 8300000, guid: 921469030b2c6044fad1f3d03f7fe974, type: 3}
+  - {fileID: 8300000, guid: f607f649de9166e46b76be5de6cf16b7, type: 3}
 --- !u!1001 &5112348479457928158
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,24 +7,31 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public static UnityEvent<object> onDebugMessage = new UnityEvent<object>();
-    private string latestDebugMessage = "nothing received yet";
-    public Transform debugMessagePosition;
+    public List<Waypoint> patrolPoints;
     
+    private static GameManager _instance;
+
+    public static GameManager Instance { get { return _instance; } }
+    
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        } else {
+            _instance = this;
+        }
+    }
+
     private void Start()
     {
-        onDebugMessage.AddListener(receiveDebugMessage);
+        
     }
-
-    private void receiveDebugMessage(object pMessage)
-    {
-        latestDebugMessage = pMessage.ToString();
-    }
-
+    
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        GUIStyle style = new GUIStyle {fontSize = 75};
-        Handles.color = Color.white;
-        Handles.Label(debugMessagePosition.position, latestDebugMessage, style);
+        
     }
+#endif
 }
