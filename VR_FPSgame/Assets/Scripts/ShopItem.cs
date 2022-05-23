@@ -17,7 +17,6 @@ public class ShopItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         if(other.CompareTag("PlayerHand")) onPlayerAttemptBuy.Invoke(weaponType);
     }
 }

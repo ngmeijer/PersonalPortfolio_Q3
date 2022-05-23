@@ -27,4 +27,24 @@ public class PlayerStats : MonoBehaviour
     public static int GrenadeAmmo = 4;
 
     public static int PowerUp1;
+
+    public static void UpdateWeaponProperties(Weapons pWeaponType, WeaponSO pNewProperties)
+    {
+        switch (pWeaponType)
+        {
+            case Weapons.Pistol:
+                PistolLevel = pNewProperties.Level;
+                PistolDamage = pNewProperties.CurrentDamage;
+                PistolAmmo = pNewProperties.CurrentAmmoCount;
+                break;
+            case Weapons.AssaultRifle:
+                break;
+            case Weapons.Shotgun:
+                break;
+            case Weapons.Sword:
+                break;
+            case Weapons.Grenade:
+                break;
+        }
+    }
 }

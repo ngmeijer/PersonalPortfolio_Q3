@@ -8,6 +8,7 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public List<Waypoint> patrolPoints;
+    public Dictionary<Weapons, WeaponSO> weaponProperties;
     
     private static GameManager _instance;
 
