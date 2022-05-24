@@ -42,7 +42,10 @@ public class Shoot : MonoBehaviour
     {
         if (muzzleFlashEnabled) muzzleFlash.Play();
         if (soundEffectEnabled) gunshotSound.Play();
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnpoint.position, bulletSpawnpoint.rotation);
+        GameObject bullet = ObjectPool.Instance.GetPooledItem();
+        bullet.transform.position = bulletSpawnpoint.position;
+        bullet.transform.rotation = bulletSpawnpoint.rotation;
+        
         // if (muzzleFlashEnabled) muzzleFlash.Stop();
     }
 }

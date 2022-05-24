@@ -7,7 +7,7 @@ public class WeaponSO : ScriptableObject
     public int[] AllCosts;
     public int[] Damage;
     public int[] AmmoCount;
-    public int Level;
+    public int Level = -1;
 
     public int CurrentDamage;
     public int CurrentAmmoCount;

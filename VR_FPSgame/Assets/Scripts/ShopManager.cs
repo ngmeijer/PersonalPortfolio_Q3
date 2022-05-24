@@ -66,6 +66,11 @@ public class ShopManager : MonoBehaviour
     public void CheckTransaction(Weapons pWeaponType)
     {
         WeaponSO weapon = getWeaponProperties(pWeaponType);
+        if (weapon == null)
+        {
+            Debug.Log($"Not a valid data object assigned for {weapon}");
+            return;
+        }
         int weaponCost = weapon.AllCosts[weapon.Level++];
 
         if (PlayerStats.CurrentGold < weaponCost) return;
