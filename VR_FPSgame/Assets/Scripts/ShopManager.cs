@@ -26,8 +26,10 @@ public class ShopManager : MonoBehaviour
     public WeaponSO rifleProperties;
     public WeaponSO shotgunProperties;
 
-    [SerializeField] private TextMeshProUGUI pistolCost;
-    [SerializeField] private TextMeshProUGUI pistolNextLevel;
+    [SerializeField] private TextMeshProUGUI pistolCostText;
+    [SerializeField] private TextMeshProUGUI pistolNextLevelText;
+    [SerializeField] private TextMeshProUGUI damageText;
+    [SerializeField] private TextMeshProUGUI ammoText;
 
     private void Awake()
     {
@@ -41,13 +43,23 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        updateWeaponPedestalUI();
+    }
+
     private void updateWeaponPedestalUI()
     {
         string defaultCostText = "Cost: ";
         string defaultLevelText = "Next level: ";
-        pistolCost.SetText($"{defaultCostText}{pistolProperties.AllCosts[pistolProperties.Level].ToString()}");
-        pistolNextLevel.SetText($"{defaultLevelText}{pistolProperties.Level++}");
-        
+        string defaultDamageText = "Damage: ";
+        string defaultAmmoText = "Ammo: ";
+        int newLevel = pistolProperties.Level + 1;
+        pistolCostText.SetText($"{defaultCostText}{pistolProperties.AllCosts[newLevel]}");
+        pistolNextLevelText.SetText($"{defaultLevelText}{newLevel}");
+        damageText.SetText($"{defaultDamageText}{pistolProperties.Damage[newLevel]}");
+        ammoText.SetText($"{defaultAmmoText}{pistolProperties.AmmoCount[newLevel]}");
+
         //Rest of the weapons.
     }
 
@@ -62,7 +74,7 @@ public class ShopManager : MonoBehaviour
         weapon.CurrentAmmoCount = weapon.AmmoCount[weapon.Level];
         PlayerStats.CurrentGold -= weaponCost;
         PlayerStats.UpdateWeaponProperties(pWeaponType, weapon);
-        
+
         updateWeaponPedestalUI();
 
         //Succesfully bought weapon
@@ -78,7 +90,6 @@ public class ShopManager : MonoBehaviour
                 return rifleProperties;
             case Weapons.Shotgun:
                 return shotgunProperties;
-                break;
             case Weapons.Sword:
                 break;
             case Weapons.Grenade:

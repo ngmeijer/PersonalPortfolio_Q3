@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   Name: Pistol
-  Cost: 100
-  Damage: 25
-  AmmoCount: 8
-  Level: 1
+  AllCosts: 14000000280000003c0000006400000096000000
+  Damage: 0c00000023000000320000004100000050000000
+  AmmoCount: 1000000018000000200000002800000030000000
+  Level: 0
+  CurrentDamage: 0
+  CurrentAmmoCount: 0
