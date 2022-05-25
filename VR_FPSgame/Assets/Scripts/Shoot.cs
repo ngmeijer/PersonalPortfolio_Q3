@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private ProjectileType bulletType;
     [SerializeField] private Transform bulletSpawnpoint;
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private AudioSource gunshotSound;
@@ -42,10 +42,13 @@ public class Shoot : MonoBehaviour
     {
         if (muzzleFlashEnabled) muzzleFlash.Play();
         if (soundEffectEnabled) gunshotSound.Play();
-        GameObject bullet = ObjectPool.Instance.GetPooledItem();
-        bullet.transform.position = bulletSpawnpoint.position;
-        bullet.transform.rotation = bulletSpawnpoint.rotation;
-        
+        GameObject bullet = ObjectPool.Instance.GetPooledItem(bulletType);
+        if (bullet != null)
+        {
+            bullet.transform.position = bulletSpawnpoint.position;
+            bullet.transform.rotation = bulletSpawnpoint.rotation;
+            bullet.SetActive(true);
+        }
         // if (muzzleFlashEnabled) muzzleFlash.Stop();
     }
 }

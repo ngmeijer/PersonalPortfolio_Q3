@@ -31,6 +31,8 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private TextMeshProUGUI ammoText;
 
+    [SerializeField] private TextMeshProUGUI goldCountText;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -45,15 +47,22 @@ public class ShopManager : MonoBehaviour
 
     private void Start()
     {
+        updatePlayerStats();
         updateWeaponPedestalUI();
+    }
+
+    private void updatePlayerStats()
+    {
+        const string defaultGoldCount = "Gold: ";
+        goldCountText.SetText($"{defaultGoldCount}{PlayerStats.CurrentGold}");
     }
 
     private void updateWeaponPedestalUI()
     {
-        string defaultCostText = "Cost: ";
-        string defaultLevelText = "Next level: ";
-        string defaultDamageText = "Damage: ";
-        string defaultAmmoText = "Ammo: ";
+        const string defaultCostText = "Cost: ";
+        const string defaultLevelText = "Next level: ";
+        const string defaultDamageText = "Damage: ";
+        const string defaultAmmoText = "Ammo: ";
         int newLevel = pistolProperties.Level + 1;
         pistolCostText.SetText($"{defaultCostText}{pistolProperties.AllCosts[newLevel]}");
         pistolNextLevelText.SetText($"{defaultLevelText}{newLevel}");

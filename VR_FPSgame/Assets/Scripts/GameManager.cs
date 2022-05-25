@@ -23,11 +23,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        
-    }
-    
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
