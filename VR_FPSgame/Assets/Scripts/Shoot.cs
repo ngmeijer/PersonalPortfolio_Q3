@@ -20,8 +20,6 @@ public class Shoot : MonoBehaviour
     {
         if (TestShootMode) GetComponent<Rigidbody>().useGravity = false;
         if (muzzleFlash == null) muzzleFlashEnabled = false;
-        else muzzleFlash.Stop();
-
         if (gunshotSound == null) soundEffectEnabled = false;
     }
 
@@ -43,13 +41,11 @@ public class Shoot : MonoBehaviour
         if (muzzleFlashEnabled) muzzleFlash.Play();
         if (soundEffectEnabled) gunshotSound.Play();
         GameObject bullet = ObjectPool.Instance.GetPooledItem(bulletType);
-        Debug.Log(bullet);
         if (bullet != null)
         {
             bullet.transform.position = bulletSpawnpoint.position;
             bullet.transform.rotation = bulletSpawnpoint.rotation;
             bullet.SetActive(true);
         }
-        // if (muzzleFlashEnabled) muzzleFlash.Stop();
     }
 }

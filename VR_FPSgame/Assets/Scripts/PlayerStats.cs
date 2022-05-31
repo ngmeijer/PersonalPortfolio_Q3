@@ -28,22 +28,22 @@ public class PlayerStats : MonoBehaviour
 
     public static int PowerUp1;
 
-    public static void UpdateWeaponProperties(Weapons pWeaponType, WeaponSO pNewProperties)
+    public static void UpdateWeaponProperties(WeaponType pWeaponTypeType, WeaponSO pNewProperties)
     {
-        switch (pWeaponType)
+        switch (pWeaponTypeType)
         {
-            case Weapons.Pistol:
+            case WeaponType.Pistol:
                 PistolLevel = pNewProperties.Level;
                 PistolDamage = pNewProperties.CurrentDamage;
                 PistolAmmo = pNewProperties.CurrentAmmoCount;
                 break;
-            case Weapons.AssaultRifle:
+            case WeaponType.AssaultRifle:
                 break;
-            case Weapons.Shotgun:
+            case WeaponType.Shotgun:
                 break;
-            case Weapons.Sword:
+            case WeaponType.Sword:
                 break;
-            case Weapons.Grenade:
+            case WeaponType.Grenade:
                 break;
         }
     }

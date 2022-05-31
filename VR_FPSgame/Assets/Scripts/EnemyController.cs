@@ -81,6 +81,7 @@ public class EnemyController : MonoBehaviour
         if (pNewState == e_currentState) return;
         if (HasDied) return;
         if (currentState != null) currentState.ExitState();
+        checkLastState(e_currentState);
 
         switch (pNewState)
         {
@@ -114,9 +115,29 @@ public class EnemyController : MonoBehaviour
                            $"or added in the EnemyController script!");
     }
 
+    private void checkLastState(E_State pLastState)
+    {
+        switch (pLastState)
+        {
+            case E_State.Idle:
+                break;
+            case E_State.Patrol:
+                agentIsAlert = true;
+                break;
+            case E_State.Chase:
+                break;
+            case E_State.Attack:
+                break;
+            case E_State.Death:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(pLastState), pLastState, null);
+        }
+    }
+
     private void Update()
     {
-        if (!agentIsAlert) changeState(E_State.Patrol);
+        //if (!agentIsAlert) changeState(E_State.Patrol);
         
         float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
         if (distanceToPlayer > agent.stoppingDistance && agentIsAlert) changeState(E_State.Chase);

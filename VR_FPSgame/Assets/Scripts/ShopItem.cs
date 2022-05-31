@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 public class ShopItem : MonoBehaviour
 {
-    private UnityEvent<Weapons> onPlayerAttemptBuy = new UnityEvent<Weapons>();
-    [SerializeField] private Weapons weaponType;
+    private UnityEvent<WeaponType> onPlayerAttemptBuy = new UnityEvent<WeaponType>();
+    [SerializeField] private WeaponType weaponTypeType;
     private BoxCollider boxTrigger;
     
     private void Start()
@@ -17,6 +17,6 @@ public class ShopItem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("PlayerHand")) onPlayerAttemptBuy.Invoke(weaponType);
+        if(other.CompareTag("PlayerHand")) onPlayerAttemptBuy.Invoke(weaponTypeType);
     }
 }

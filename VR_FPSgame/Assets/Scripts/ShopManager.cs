@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public enum Weapons
+public enum WeaponType
 {
     Pistol,
     AssaultRifle,
@@ -72,9 +72,9 @@ public class ShopManager : MonoBehaviour
         //Rest of the weapons.
     }
 
-    public void CheckTransaction(Weapons pWeaponType)
+    public void CheckTransaction(WeaponType pWeaponTypeType)
     {
-        WeaponSO weapon = getWeaponProperties(pWeaponType);
+        WeaponSO weapon = getWeaponProperties(pWeaponTypeType);
         if (weapon == null)
         {
             Debug.Log($"Not a valid data object assigned for {weapon}");
@@ -87,26 +87,26 @@ public class ShopManager : MonoBehaviour
         weapon.CurrentDamage = weapon.Damage[weapon.Level];
         weapon.CurrentAmmoCount = weapon.AmmoCount[weapon.Level];
         PlayerStats.CurrentGold -= weaponCost;
-        PlayerStats.UpdateWeaponProperties(pWeaponType, weapon);
+        PlayerStats.UpdateWeaponProperties(pWeaponTypeType, weapon);
 
         updateWeaponPedestalUI();
 
         //Succesfully bought weapon
     }
 
-    private WeaponSO getWeaponProperties(Weapons pWeaponType)
+    private WeaponSO getWeaponProperties(WeaponType pWeaponTypeType)
     {
-        switch (pWeaponType)
+        switch (pWeaponTypeType)
         {
-            case Weapons.Pistol:
+            case WeaponType.Pistol:
                 return pistolProperties;
-            case Weapons.AssaultRifle:
+            case WeaponType.AssaultRifle:
                 return rifleProperties;
-            case Weapons.Shotgun:
+            case WeaponType.Shotgun:
                 return shotgunProperties;
-            case Weapons.Sword:
+            case WeaponType.Sword:
                 break;
-            case Weapons.Grenade:
+            case WeaponType.Grenade:
                 break;
         }
 
