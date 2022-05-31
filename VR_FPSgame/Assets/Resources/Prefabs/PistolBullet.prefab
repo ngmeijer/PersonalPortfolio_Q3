@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5664430595950345986}
-  m_LocalRotation: {x: -0.4999998, y: 0.49999943, z: -0.50000024, w: -0.5000006}
-  m_LocalPosition: {x: 0.000000008637476, y: -0.05006637, z: -0.0016882265}
+  m_LocalRotation: {x: -0.7071068, y: 0.70710677, z: -0.00000006705522, w: -0.00000057352526}
+  m_LocalPosition: {x: -0.00000003511862, y: 0.0007035619, z: -0.052458107}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5664430595950699302}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: -180, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: -90}
 --- !u!33 &5664430595947275012
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -106,13 +106,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5664430595950345988}
-  m_LocalRotation: {x: -0.4999998, y: 0.49999943, z: -0.50000024, w: -0.5000006}
-  m_LocalPosition: {x: 0.000037767357, y: 0.07191424, z: -0.0016985785}
+  m_LocalRotation: {x: -0.7071068, y: 0.70710677, z: -0.00000006705522, w: -0.00000057352526}
+  m_LocalPosition: {x: 0.00003782916, y: 0.00071373646, z: 0.06952252}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5664430595950699302}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: -180, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: -90}
 --- !u!33 &5664430595947275014
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5664430595950345990}
-  m_LocalRotation: {x: 0.70710653, y: -0.00000026341786, z: 0.0000002634177, w: 0.70710707}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.0007026169, y: -0.00013119157, z: -0.00044234068}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
@@ -197,7 +197,7 @@ Transform:
   - {fileID: 5664430595950699298}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2829281996440100979
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -347,4 +347,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2829281996440100979}
-  bulletForce: 20
+  bulletForce: 2

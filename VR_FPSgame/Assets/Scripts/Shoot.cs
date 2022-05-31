@@ -12,7 +12,7 @@ public class Shoot : MonoBehaviour
     private bool muzzleFlashEnabled = true;
     private bool soundEffectEnabled = true;
     private float timer;
-    private float delay = 1f;
+    private float delay = 0.5f;
 
     public bool TestShootMode;
 
@@ -43,6 +43,7 @@ public class Shoot : MonoBehaviour
         if (muzzleFlashEnabled) muzzleFlash.Play();
         if (soundEffectEnabled) gunshotSound.Play();
         GameObject bullet = ObjectPool.Instance.GetPooledItem(bulletType);
+        Debug.Log(bullet);
         if (bullet != null)
         {
             bullet.transform.position = bulletSpawnpoint.position;

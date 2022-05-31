@@ -80,7 +80,7 @@ public class ShopManager : MonoBehaviour
             Debug.Log($"Not a valid data object assigned for {weapon}");
             return;
         }
-        int weaponCost = weapon.AllCosts[weapon.Level++];
+        int weaponCost = weapon.AllCosts[weapon.Level];
 
         if (PlayerStats.CurrentGold < weaponCost) return;
         weapon.Level++;

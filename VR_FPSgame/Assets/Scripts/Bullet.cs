@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
+        timer = 0;
         rb.AddForce(transform.forward * bulletForce, ForceMode.Impulse);
     }
 
@@ -28,6 +29,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.collider.CompareTag("Untagged") || other.collider.CompareTag("Enemy")) gameObject.SetActive(false);
+        if (other.collider.CompareTag("Weapon")) return;
+        if (other.collider.CompareTag("Enemy")) gameObject.SetActive(false);
     }
 }

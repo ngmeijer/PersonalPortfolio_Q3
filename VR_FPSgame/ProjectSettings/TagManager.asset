@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - RifleBullet
   - PlayerHand
+  - Weapon
   layers:
   - Default
   - TransparentFX
