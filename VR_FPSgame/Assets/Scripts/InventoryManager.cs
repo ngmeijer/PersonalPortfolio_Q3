@@ -49,17 +49,17 @@ public class InventoryManager : MonoBehaviour
                 weaponInstance.transform.SetParent(weaponSlots[0]);
                 break;
             case WeaponType.AssaultRifle:
-                weaponInstance.transform.SetParent(weaponSlots[0]);
+                weaponInstance.transform.SetParent(weaponSlots[1]);
                 break;
             case WeaponType.Shotgun:
-                weaponInstance.transform.SetParent(weaponSlots[0]);
+                weaponInstance.transform.SetParent(weaponSlots[2]);
                 break;
             case WeaponType.Sword:
-                weaponInstance.transform.SetParent(weaponSlots[0]);
+                weaponInstance.transform.SetParent(weaponSlots[3]);
                 break;
-            case WeaponType.Grenade:
-                weaponInstance.transform.SetParent(weaponSlots[0]);
-                break;
+            // case WeaponType.Grenade:
+            //     weaponInstance.transform.SetParent(weaponSlots[0]);
+            //     break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(pWeaponTypeType), pWeaponTypeType, null);
         }

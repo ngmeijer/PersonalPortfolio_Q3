@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum WeaponType
 {
@@ -25,6 +26,7 @@ public class ShopManager : MonoBehaviour
     public WeaponSO pistolProperties;
     public WeaponSO rifleProperties;
     public WeaponSO shotgunProperties;
+    public WeaponSO swordProperties;
 
     [SerializeField] private TextMeshProUGUI pistolCostText;
     [SerializeField] private TextMeshProUGUI pistolNextLevelText;
@@ -32,6 +34,11 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ammoText;
 
     [SerializeField] private TextMeshProUGUI goldCountText;
+    [SerializeField] private TextMeshProUGUI lastActionText;
+
+    public UnityEvent<bool> onTransactionCheckFinish = new UnityEvent<bool>();
+    private WeaponType lastWeaponBought;
+    private int lastItemPrice;
 
     private void Awake()
     {
@@ -48,13 +55,14 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         updatePlayerStats();
-        updateWeaponPedestalUI();
+        //updateWeaponPedestalUI();
     }
 
     private void updatePlayerStats()
     {
         const string defaultGoldCount = "Gold: ";
         goldCountText.SetText($"{defaultGoldCount}{PlayerStats.CurrentGold}");
+        lastActionText.SetText($"Spent {lastItemPrice} on {lastWeaponBought}");
     }
 
     private void updateWeaponPedestalUI()
@@ -72,26 +80,39 @@ public class ShopManager : MonoBehaviour
         //Rest of the weapons.
     }
 
-    public void CheckTransaction(WeaponType pWeaponTypeType)
+    public void CheckTransaction(WeaponType pWeaponType)
     {
-        WeaponSO weapon = getWeaponProperties(pWeaponTypeType);
+        WeaponSO weapon = getWeaponProperties(pWeaponType);
         if (weapon == null)
         {
-            Debug.Log($"Not a valid data object assigned for {weapon}");
+            Debug.LogError($"Not a valid data object assigned for {pWeaponType}");
+            onTransactionCheckFinish.Invoke(false);
             return;
         }
+
+        if (weapon.Level >= weapon.MaxLevel) return;
+
         int weaponCost = weapon.AllCosts[weapon.Level];
 
-        if (PlayerStats.CurrentGold < weaponCost) return;
+        if (PlayerStats.CurrentGold < weaponCost)
+        {
+            onTransactionCheckFinish.Invoke(false);
+            return;
+        }
+
+        onTransactionCheckFinish.Invoke(true);
+
         weapon.Level++;
         weapon.CurrentDamage = weapon.Damage[weapon.Level];
         weapon.CurrentAmmoCount = weapon.AmmoCount[weapon.Level];
         PlayerStats.CurrentGold -= weaponCost;
-        PlayerStats.UpdateWeaponProperties(pWeaponTypeType, weapon);
+        PlayerStats.UpdateWeaponProperties(pWeaponType, weapon);
+        lastWeaponBought = pWeaponType;
+        lastItemPrice = weaponCost;
 
-        updateWeaponPedestalUI();
+        updatePlayerStats();
 
-        //Succesfully bought weapon
+        //updateWeaponPedestalUI();
     }
 
     private WeaponSO getWeaponProperties(WeaponType pWeaponTypeType)
