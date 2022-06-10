@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26142963e6a489eb66dcb61920e0284, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  Name: Shotgun
+  WeaponName: Shotgun
+  WeaponType: 2
   AllCosts: 0100000002000000030000000400000005000000
-  Damage: 6400000064000000640000006400000064000000
-  AmmoCount: 0a0000000a0000000a0000000a0000000a000000
-  Level: 0
+  AllDamage: 6400000064000000640000006400000064000000
+  AllAmmo: 0a0000000a0000000a0000000a0000000a000000
+  Level: 3
   MaxLevel: 4
   CurrentDamage: 0
   CurrentAmmoCount: 0

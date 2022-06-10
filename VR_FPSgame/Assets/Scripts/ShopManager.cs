@@ -28,15 +28,11 @@ public class ShopManager : MonoBehaviour
     public WeaponSO shotgunProperties;
     public WeaponSO swordProperties;
 
-    [SerializeField] private TextMeshProUGUI pistolCostText;
-    [SerializeField] private TextMeshProUGUI pistolNextLevelText;
-    [SerializeField] private TextMeshProUGUI damageText;
-    [SerializeField] private TextMeshProUGUI ammoText;
-
     [SerializeField] private TextMeshProUGUI goldCountText;
     [SerializeField] private TextMeshProUGUI lastActionText;
 
-    public UnityEvent<bool> onTransactionCheckFinish = new UnityEvent<bool>();
+    public UnityEvent<WeaponSO> onGameStartUpdateWeaponUI = new UnityEvent<WeaponSO>();
+    public UnityEvent<bool, WeaponSO> onTransactionCheckFinish = new UnityEvent<bool, WeaponSO>();
     private WeaponType lastWeaponBought;
     private int lastItemPrice;
 
@@ -55,7 +51,10 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         updatePlayerStats();
-        //updateWeaponPedestalUI();
+        onGameStartUpdateWeaponUI.Invoke(pistolProperties);
+        onGameStartUpdateWeaponUI.Invoke(rifleProperties);
+        onGameStartUpdateWeaponUI.Invoke(shotgunProperties);
+        onGameStartUpdateWeaponUI.Invoke(swordProperties);
     }
 
     private void updatePlayerStats()
@@ -65,28 +64,13 @@ public class ShopManager : MonoBehaviour
         lastActionText.SetText($"Spent {lastItemPrice} on {lastWeaponBought}");
     }
 
-    private void updateWeaponPedestalUI()
-    {
-        const string defaultCostText = "Cost: ";
-        const string defaultLevelText = "Next level: ";
-        const string defaultDamageText = "Damage: ";
-        const string defaultAmmoText = "Ammo: ";
-        int newLevel = pistolProperties.Level + 1;
-        pistolCostText.SetText($"{defaultCostText}{pistolProperties.AllCosts[newLevel]}");
-        pistolNextLevelText.SetText($"{defaultLevelText}{newLevel}");
-        damageText.SetText($"{defaultDamageText}{pistolProperties.Damage[newLevel]}");
-        ammoText.SetText($"{defaultAmmoText}{pistolProperties.AmmoCount[newLevel]}");
-
-        //Rest of the weapons.
-    }
-
     public void CheckTransaction(WeaponType pWeaponType)
     {
         WeaponSO weapon = getWeaponProperties(pWeaponType);
         if (weapon == null)
         {
             Debug.LogError($"Not a valid data object assigned for {pWeaponType}");
-            onTransactionCheckFinish.Invoke(false);
+            onTransactionCheckFinish.Invoke(false, weapon);
             return;
         }
 
@@ -96,23 +80,21 @@ public class ShopManager : MonoBehaviour
 
         if (PlayerStats.CurrentGold < weaponCost)
         {
-            onTransactionCheckFinish.Invoke(false);
+            onTransactionCheckFinish.Invoke(false, weapon);
             return;
         }
 
-        onTransactionCheckFinish.Invoke(true);
+        onTransactionCheckFinish.Invoke(true, weapon);
 
         weapon.Level++;
-        weapon.CurrentDamage = weapon.Damage[weapon.Level];
-        weapon.CurrentAmmoCount = weapon.AmmoCount[weapon.Level];
+        weapon.CurrentDamage = weapon.AllDamage[weapon.Level];
+        weapon.CurrentAmmoCount = weapon.AllAmmo[weapon.Level];
         PlayerStats.CurrentGold -= weaponCost;
         PlayerStats.UpdateWeaponProperties(pWeaponType, weapon);
         lastWeaponBought = pWeaponType;
         lastItemPrice = weaponCost;
 
         updatePlayerStats();
-
-        //updateWeaponPedestalUI();
     }
 
     private WeaponSO getWeaponProperties(WeaponType pWeaponTypeType)

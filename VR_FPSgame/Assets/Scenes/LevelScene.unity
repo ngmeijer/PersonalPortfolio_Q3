@@ -871,7 +871,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2582,6 +2582,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 215304833}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &219661862 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4667452362308060019, guid: b708af4c3a2432640aaee0fe072463ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 4667452361521360439}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &225067243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5121,7 +5133,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -7509,7 +7521,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -8289,7 +8301,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0.05
+  m_Spacing: 0.08
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -10727,7 +10739,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -11959,7 +11971,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -15089,7 +15101,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -15818,7 +15830,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -17315,7 +17327,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0.05
+  m_Spacing: 0.08
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -18782,7 +18794,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -20037,7 +20049,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0.05
+  m_Spacing: 0.08
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -20353,7 +20365,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -22669,7 +22681,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -23486,12 +23498,12 @@ MonoBehaviour:
   pistolProperties: {fileID: 11400000, guid: 7166da52d82582046ba8954e7433f4d3, type: 2}
   rifleProperties: {fileID: 11400000, guid: 66ce68812bc476d4f86d3d9f77c8dc23, type: 2}
   shotgunProperties: {fileID: 11400000, guid: 7a634a6e6ff6c184393238ef2797acc7, type: 2}
-  pistolCostText: {fileID: 818728736}
-  pistolNextLevelText: {fileID: 1818568519}
-  damageText: {fileID: 1436197424}
-  ammoText: {fileID: 191863860}
+  swordProperties: {fileID: 11400000, guid: 1ec849bc77d63874e87ab3c3c1427fc8, type: 2}
   goldCountText: {fileID: 1410071356}
   lastActionText: {fileID: 1642977666}
+  onGameStartUpdateWeaponUI:
+    m_PersistentCalls:
+      m_Calls: []
   onTransactionCheckFinish:
     m_PersistentCalls:
       m_Calls: []
@@ -24057,7 +24069,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -24419,7 +24431,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 0.05
+  m_Spacing: 0.08
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -27726,7 +27738,7 @@ MonoBehaviour:
   m_fontSizeMin: 0
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -28231,7 +28243,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -28431,7 +28443,7 @@ GameObject:
   - component: {fileID: 4667452361325563130}
   - component: {fileID: 4667452361325563131}
   m_Layer: 0
-  m_Name: WeaponText
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28466,7 +28478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 191863860, guid: b708af4c3a2432640aaee0fe072463ec, type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1436197423, guid: b708af4c3a2432640aaee0fe072463ec, type: 3}
       propertyPath: m_AnchorMax.y
@@ -28490,7 +28502,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1436197424, guid: b708af4c3a2432640aaee0fe072463ec, type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1695988846, guid: b708af4c3a2432640aaee0fe072463ec, type: 3}
+      propertyPath: m_Spacing
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 1818568518, guid: b708af4c3a2432640aaee0fe072463ec, type: 3}
       propertyPath: m_AnchorMax.y
@@ -28514,7 +28530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1818568519, guid: b708af4c3a2432640aaee0fe072463ec, type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4667452362308060020, guid: b708af4c3a2432640aaee0fe072463ec,
         type: 3}
@@ -28541,10 +28557,15 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4667452362308060021, guid: b708af4c3a2432640aaee0fe072463ec,
+        type: 3}
+      propertyPath: m_Name
+      value: NameText
+      objectReference: {fileID: 0}
     - target: {fileID: 4667452362322157847, guid: b708af4c3a2432640aaee0fe072463ec,
         type: 3}
       propertyPath: m_HorizontalAlignment
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4667452362322157864, guid: b708af4c3a2432640aaee0fe072463ec,
         type: 3}
@@ -28811,7 +28832,7 @@ GameObject:
   - component: {fileID: 4667452361632389728}
   - component: {fileID: 4667452361632389729}
   m_Layer: 0
-  m_Name: WeaponText
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28879,7 +28900,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -29120,7 +29141,7 @@ GameObject:
   - component: {fileID: 4667452362159885818}
   - component: {fileID: 4667452362159885819}
   m_Layer: 0
-  m_Name: WeaponText
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29188,7 +29209,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -29336,7 +29357,7 @@ GameObject:
   - component: {fileID: 4667452362689813970}
   - component: {fileID: 1520890854}
   m_Layer: 0
-  m_Name: PistolUIContainer (4)
+  m_Name: GrenadeContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29377,7 +29398,7 @@ GameObject:
   - component: {fileID: 4667452362928446674}
   - component: {fileID: 1826730726}
   m_Layer: 0
-  m_Name: PistolUIContainer (3)
+  m_Name: SwordContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29482,7 +29503,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -29645,7 +29666,7 @@ GameObject:
   - component: {fileID: 4667452363394077186}
   - component: {fileID: 4667452363394077187}
   m_Layer: 0
-  m_Name: WeaponText
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30535,7 +30556,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f522af6d18964fb1d5e445ab9bd1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponTypeType: 1
+  weaponType: 1
+  nameText: {fileID: 4667452363394077187}
+  costText: {fileID: 4667452363374751847}
+  nextLevelText: {fileID: 790787639}
+  damageText: {fileID: 383644480}
+  ammoText: {fileID: 1210633540}
 --- !u!114 &8861491577790477678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30548,7 +30574,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f522af6d18964fb1d5e445ab9bd1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponTypeType: 0
+  weaponType: 0
+  nameText: {fileID: 219661862}
+  costText: {fileID: 818728736}
+  nextLevelText: {fileID: 1818568519}
+  damageText: {fileID: 1436197424}
+  ammoText: {fileID: 191863860}
 --- !u!114 &8861491578152910782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30561,7 +30592,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f522af6d18964fb1d5e445ab9bd1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponTypeType: 0
+  weaponType: 4
+  nameText: {fileID: 4667452361325563131}
+  costText: {fileID: 4667452361310301855}
+  nextLevelText: {fileID: 1406494927}
+  damageText: {fileID: 1781198264}
+  ammoText: {fileID: 887083964}
 --- !u!114 &8861491578196571695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30574,7 +30610,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f522af6d18964fb1d5e445ab9bd1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponTypeType: 3
+  weaponType: 3
+  nameText: {fileID: 4667452362159885819}
+  costText: {fileID: 4667452362211864479}
+  nextLevelText: {fileID: 1704077775}
+  damageText: {fileID: 1550691512}
+  ammoText: {fileID: 43553468}
 --- !u!114 &8861491578265185949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30587,4 +30628,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776f522af6d18964fb1d5e445ab9bd1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponTypeType: 2
+  weaponType: 2
+  nameText: {fileID: 4667452361632389729}
+  costText: {fileID: 4667452361646749701}
+  nextLevelText: {fileID: 1143160405}
+  damageText: {fileID: 2111617826}
+  ammoText: {fileID: 589923622}
