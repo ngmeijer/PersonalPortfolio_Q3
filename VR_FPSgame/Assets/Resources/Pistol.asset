@@ -17,7 +17,7 @@ MonoBehaviour:
   AllCosts: 0100000002000000030000000400000005000000
   AllDamage: 6400000064000000640000006400000064000000
   AllAmmo: 0a0000000a0000000a0000000a0000000a000000
-  Level: 3
+  Level: -1
   MaxLevel: 4
-  CurrentDamage: 0
-  CurrentAmmoCount: 0
+  CurrentDamage: 100
+  CurrentAmmoCount: 10
