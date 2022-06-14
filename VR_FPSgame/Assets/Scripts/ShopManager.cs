@@ -11,7 +11,8 @@ public enum WeaponType
     AssaultRifle,
     Shotgun,
     Sword,
-    Grenade
+    Grenade,
+    Undefined
 }
 
 public class ShopManager : MonoBehaviour
@@ -33,8 +34,8 @@ public class ShopManager : MonoBehaviour
 
     public UnityEvent<WeaponSO> onGameStartUpdateWeaponUI = new UnityEvent<WeaponSO>();
     public UnityEvent<bool, WeaponSO> onTransactionCheckFinish = new UnityEvent<bool, WeaponSO>();
-    private WeaponType lastWeaponBought;
-    private int lastItemPrice;
+    private WeaponType lastWeaponBought = WeaponType.AssaultRifle;
+    private int lastItemPrice = 50;
 
     private void Awake()
     {
