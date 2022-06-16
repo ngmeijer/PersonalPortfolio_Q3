@@ -8,25 +8,52 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public List<Waypoint> patrolPoints;
-    
+
     private static GameManager _instance;
 
-    public static GameManager Instance { get { return _instance; } }
-    
+    public static GameManager Instance
+    {
+        get { return _instance; }
+    }
+
+    public bool EnableShutdownAfterDelay;
+    public float Delay = 10f;
+    private float timer;
+    private bool hasStarted;
+
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
-        } else {
+        }
+        else
+        {
             _instance = this;
+        }
+    }
+
+    private void Update()
+    {
+        if (EnableShutdownAfterDelay)
+        {
+            if (Input.GetKeyDown(KeyCode.Space)) hasStarted = true;
+
+            if (hasStarted)
+            {
+                if (timer < Delay)
+                {
+                    timer += Time.deltaTime;
+                }
+                else Application.Quit();
+            }
         }
     }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        
     }
 #endif
 }

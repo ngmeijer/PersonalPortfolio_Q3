@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-enum E_State
+public enum E_State
 {
     Idle,
     Patrol,
@@ -54,6 +54,7 @@ public class EnemyController : MonoBehaviour
 
     private bool agentIsAlert;
     public bool HasDied;
+    public bool TestMode;
 
     private void Awake()
     {
@@ -67,16 +68,18 @@ public class EnemyController : MonoBehaviour
         chaseState = GetComponent<EnemyChaseState>();
         deathState = GetComponent<EnemyDeathState>();
         attackState = GetComponent<EnemyAttackState>();
+
+        if (TestMode) agent.enabled = false;
     }
 
     private void Start()
     {
-        changeState(E_State.Patrol);
+        ChangeState(E_State.Patrol);
     }
 
-    private void listenToPlayerDeathEvent() => changeState(E_State.Idle);
+    private void listenToPlayerDeathEvent() => ChangeState(E_State.Idle);
 
-    private void changeState(E_State pNewState)
+    public void ChangeState(E_State pNewState)
     {
         if (pNewState == e_currentState) return;
         if (HasDied) return;
@@ -138,10 +141,13 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         //if (!agentIsAlert) changeState(E_State.Patrol);
-        
-        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-        if (distanceToPlayer > agent.stoppingDistance && agentIsAlert) changeState(E_State.Chase);
-        if (distanceToPlayer <= agent.stoppingDistance && agentIsAlert) changeState(E_State.Attack);
+
+        if (!TestMode)
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            if (distanceToPlayer > agent.stoppingDistance && agentIsAlert) ChangeState(E_State.Chase);
+            if (distanceToPlayer <= agent.stoppingDistance && agentIsAlert) ChangeState(E_State.Attack);
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -166,6 +172,6 @@ public class EnemyController : MonoBehaviour
     {
         currentHealth -= pDamage;
 
-        if (currentHealth <= 0) changeState(E_State.Death);
+        if (currentHealth <= 0) ChangeState(E_State.Death);
     }
 }

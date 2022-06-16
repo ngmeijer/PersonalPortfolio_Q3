@@ -9,12 +9,15 @@ public class Shoot : MonoBehaviour
     [SerializeField] private Transform bulletSpawnpoint;
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private AudioSource gunshotSound;
+    [SerializeField] private GameObject bulletPrefab;
     private bool muzzleFlashEnabled = true;
     private bool soundEffectEnabled = true;
     private float timer;
-    private float delay = 0.5f;
+    private float delay = 0.1f;
 
     public bool TestShootMode;
+    public bool EnableObjectPooling = true;
+    private bool hasStarted;
 
     private void Start()
     {
@@ -27,11 +30,16 @@ public class Shoot : MonoBehaviour
     {
         if (TestShootMode)
         {
-            timer += Time.deltaTime;
-            if (timer > delay)
+            if (Input.GetKeyDown(KeyCode.Space)) hasStarted = true;
+
+            if (hasStarted)
             {
-                ShootBullet();
-                timer = 0;
+                timer += Time.deltaTime;
+                if (timer > delay)
+                {
+                    ShootBullet();
+                    timer = 0;
+                }
             }
         }
     }
@@ -40,12 +48,16 @@ public class Shoot : MonoBehaviour
     {
         if (muzzleFlashEnabled) muzzleFlash.Play();
         if (soundEffectEnabled) gunshotSound.Play();
-        GameObject bullet = ObjectPool.Instance.GetPooledItem(bulletType);
-        if (bullet != null)
+        if (EnableObjectPooling)
         {
-            bullet.transform.position = bulletSpawnpoint.position;
-            bullet.transform.rotation = bulletSpawnpoint.rotation;
-            bullet.SetActive(true);
+            GameObject bullet = ObjectPool.Instance.GetPooledItem(bulletType);
+            if (bullet != null)
+            {
+                bullet.transform.position = bulletSpawnpoint.position;
+                bullet.transform.rotation = bulletSpawnpoint.rotation;
+                bullet.SetActive(true);
+            }
         }
+        else Instantiate(bulletPrefab, bulletSpawnpoint.position, bulletSpawnpoint.rotation);
     }
 }

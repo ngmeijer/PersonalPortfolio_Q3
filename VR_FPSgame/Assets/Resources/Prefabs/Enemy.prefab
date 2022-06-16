@@ -206,6 +206,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   HasDied: 0
+  TestMode: 0
 --- !u!114 &-5128143729266401972
 MonoBehaviour:
   m_ObjectHideFlags: 0
