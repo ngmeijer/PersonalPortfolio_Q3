@@ -16,24 +16,28 @@ public class SceneLoader : MonoBehaviour
 
     private void Start()
     {
-        if(EnableTestMode && EnableAsync) StartCoroutine(LoadYourAsyncScene());
+        if (EnableTestMode && EnableAsync) StartCoroutine(LoadYourAsyncScene());
     }
 
     private void Update()
     {
-        if (EnableTestMode && !EnableAsync)
-        {
-            timer += Time.deltaTime;
+        timer += Time.deltaTime;
 
+        if (EnableTestMode)
+        {
             if (timer > 2)
             {
-                EnableTestMode = false;
-                LoadNewScene();
+                if (!EnableAsync)
+                {
+                    EnableTestMode = false;
+                    LoadNewScene();
+                }
+                else allowAsyncSceneActivation();
             }
         }
     }
 
-    public void LoadNewSceneAsync()
+    public void allowAsyncSceneActivation()
     {
         if (asyncLoad.progress >= 0.9f) asyncLoad.allowSceneActivation = true;
     }
@@ -56,11 +60,10 @@ public class SceneLoader : MonoBehaviour
         while (asyncLoad.progress < 0.9f)
         {
             loadingProgressText.SetText("Loading progress: " + (asyncLoad.progress * 100) + "%");
-            
+
             yield return null;
         }
-        
+
         loadingProgressText.SetText("Loading done!");
-        if(EnableTestMode) LoadNewSceneAsync();
     }
 }
