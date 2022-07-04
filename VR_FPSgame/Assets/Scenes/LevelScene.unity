@@ -8371,7 +8371,8 @@ MonoBehaviour:
   - {fileID: 1089238030}
   - {fileID: 1691729279}
   EnableShutdownAfterDelay: 1
-  Delay: 10
+  Delay: 1.5
+  shutDownNeedsInput: 0
 --- !u!1001 &602472593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22477,6 +22478,11 @@ PrefabInstance:
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 2044789740}
+    - target: {fileID: 1575308432, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 41394042439533466, guid: 1335ff4ea0bfdf34095c6fef83f832a9,
+        type: 3}
     - target: {fileID: 1575308432, guid: 4aeae2ddb3941ab408ac06ac5b2f6333, type: 3}
       propertyPath: TestShootMode
       value: 1

@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public float Delay = 10f;
     private float timer;
     private bool hasStarted;
+    [SerializeField] private bool shutDownNeedsInput = false;
 
 
     private void Awake()
@@ -38,16 +39,16 @@ public class GameManager : MonoBehaviour
     {
         if (EnableShutdownAfterDelay)
         {
-            if (Input.GetKeyDown(KeyCode.Space)) hasStarted = true;
-
-            if (hasStarted)
+            if (shutDownNeedsInput)
             {
-                if (timer < Delay)
-                {
-                    timer += Time.deltaTime;
-                }
-                else Application.Quit();
+                if (!Input.GetKeyDown(KeyCode.Space)) return;
             }
+            
+            if (timer < Delay)
+            {
+                timer += Time.deltaTime;
+            }
+            else Application.Quit();
         }
     }
 

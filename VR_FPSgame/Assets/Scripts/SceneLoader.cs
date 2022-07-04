@@ -10,15 +10,37 @@ public class SceneLoader : MonoBehaviour
     private AsyncOperation asyncLoad;
     private bool progressToNextScene;
     [SerializeField] private TextMeshProUGUI loadingProgressText;
+    [SerializeField] private bool EnableTestMode;
+    [SerializeField] private bool EnableAsync;
+    private float timer;
 
     private void Start()
     {
-        StartCoroutine(LoadYourAsyncScene());
+        if(EnableTestMode && EnableAsync) StartCoroutine(LoadYourAsyncScene());
+    }
+
+    private void Update()
+    {
+        if (EnableTestMode && !EnableAsync)
+        {
+            timer += Time.deltaTime;
+
+            if (timer > 2)
+            {
+                EnableTestMode = false;
+                LoadNewScene();
+            }
+        }
+    }
+
+    public void LoadNewSceneAsync()
+    {
+        if (asyncLoad.progress >= 0.9f) asyncLoad.allowSceneActivation = true;
     }
 
     public void LoadNewScene()
     {
-        if(asyncLoad.progress >= 0.9f) asyncLoad.allowSceneActivation = true;
+        SceneManager.LoadScene(1);
     }
 
     public void QuitGame()
@@ -38,6 +60,7 @@ public class SceneLoader : MonoBehaviour
             yield return null;
         }
         
-        loadingProgressText.SetText("Loading done!"); 
+        loadingProgressText.SetText("Loading done!");
+        if(EnableTestMode) LoadNewSceneAsync();
     }
 }
